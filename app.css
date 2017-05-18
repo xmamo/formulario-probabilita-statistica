@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.no-page-break {
+	page-break-inside: avoid;
+}
+
+.no-page-break-after {
+	page-break-after: avoid;
+}
+
+.no-page-break-before {
+	page-break-before: avoid;
+}

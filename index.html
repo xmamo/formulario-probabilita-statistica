@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Formulario di probabilità e statistica</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" integrity="sha256-fmMNkMcjSw3xcp9iuPnku/ryk9kaWgrEbfJfKmdZ45o=" crossorigin="anonymous" />
+		<link rel="stylesheet" href="app.css" />
+	</head>
+	<body>
+		<div class="hidden">
+			\[
+				\newcommand{\d}{\mathrm{d}}
+				\DeclareMathOperator{\P}{P}
+				\DeclareMathOperator{\f}{f}
+				\DeclareMathOperator{\F}{F}
+				\DeclareMathOperator{\E}{E}
+				\DeclareMathOperator{\Var}{Var}
+				\DeclareMathOperator{\M}{M}
+			\]
+		</div>
+		<article class="container">
+			<header class="no-page-break-after">
+				<h1>Formulario di probabilità e statistica</h1>
+			</header>
+			<section id="fondamenti" class="no-page-break-before">
+				<header class="no-page-break-after">
+					<h2>Fondamenti</h2>
+				</header>
+				<div class="row no-page-break">
+					<section id="probabilità-condizionata" class="col-md-4">
+						<header>
+							<h3>Probabilità condizionata</h3>
+						</header>
+						\begin{equation}
+							\P(A | B) = \frac{\P(A \cap B)}{\P(B)}
+						\end{equation}
+					</section>
+					<section id="teorema-probabilità-totale" class="col-md-4">
+						<header>
+							<h3>Teorema della probabilità totale</h3>
+						</header>
+						Sia \(\Omega_1, \ldots, \Omega_n\) partizione dello spazio campionario \(\Omega\). Allora:
+						\begin{equation}
+							\begin{aligned}
+								\P(A) & = \sum\limits_{i = 1}^{n}{\P(A \cap \Omega_i)} \\
+								& = \sum\limits_{i = 1}^{n}{\P(A | \Omega_i) \P(\Omega_i)}
+							\end{aligned}
+						\end{equation}
+					</section>
+					<section id="formula-bayes" class="col-md-4">
+						<header>
+							<h3>Formula di Bayes</h3>
+						</header>
+						<div class="row">
+							<div class="col-sm-6 col-md-12">
+								\begin{equation}
+									\P(B | A) = \frac{\P(A | B) \P(B)}{\P(A)}
+								\end{equation}
+							</div>
+							<div class="col-sm-6 col-md-12">
+								\begin{equation}
+									\P(B_j | A) = \frac{\P(A | B_j) \P(B_j)}{\sum\limits_{i = 1}^{n}{\P(A | B_i)\P(B_i)}}
+								\end{equation}
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="row no-page-break">
+					<section id="funzione-probabilità" class="col-md-4">
+						<header>
+							<h3>Funzione di probabilità</h3>
+						</header>
+						\begin{equation}
+							\f_X(x) = \P(X = x)
+						\end{equation}
+					</section>
+					<section id="funzione-ripartizione" class="col-md-4">
+						<header>
+							<h3>Funzione di ripartizione</h3>
+						</header>
+						\begin{equation}
+							\F_X(x) = \P(X \le x)
+						\end{equation}
+					</section>
+					<section class="col-md-4">
+						<header>
+							<h3>&lt;TODO: TITLE&gt;</h3>
+						</header>
+						<p>Sia \(Y = g(X)\), con \(g\) invertibile. Allora:</p>
+						\begin{equation}
+							\f_Y(y) = \frac{\d}{\d x} \F_X(g^{-1}(y))
+						\end{equation}
+					</section>
+				</div>
+				<div class="row no-page-break">
+					<section id="distribuzione-congiunta" class="col-md-4">
+						<header>
+							<h3>Distribuzione congiunta</h3>
+						</header>
+						<div class="row">
+							<div class="col-sm-6 col-md-12">
+								\begin{equation}
+									\f_{X, Y}(x, y) = \P(X = x \land Y = y)
+								\end{equation}
+							</div>
+							<div class="col-sm-6 col-md-12">
+								\begin{equation}
+									\F_{X, Y}(x, y) = \P(X \le x \land Y \le y)
+								\end{equation}
+							</div>
+						</div>
+					</section>
+					<section id="distribuzione-marginale" class="col-md-4">
+						<header>
+							<h3>Distribuzione marginale</h3>
+						</header>
+						<div class="row">
+							<div class="col-sm-6 col-md-12">
+								\begin{equation}
+									\f_X(x) = \sum\limits_{i = 1}^{+\infty}{\f_{X, Y}(x, y_i)}
+								\end{equation}
+							</div>
+							<div class="col-sm-6 col-md-12">
+								\begin{equation}
+									\f_X(x) = \int\limits_{-\infty}^{+\infty}{\f_{X, Y}(x, u) \, \d u}
+								\end{equation}
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="row no-page-break">
+					<section id="media" class="col-md-4">
+						<header>
+							<h3>Media</h3>
+						</header>
+						<div class="row">
+							<div class="col-sm-6 col-md-12">
+								\begin{equation}
+									\E[X] = \mu_X = \sum\limits_{i = 1}^{+\infty}{x_i \f_X(x_i)}
+								\end{equation}
+							</div>
+							<div class="col-sm-6 col-md-12">
+								\begin{equation}
+									\E[X] = \mu_X = \int\limits_{-\infty}^{+\infty}{x \f_X(x)\, \d x}
+								\end{equation}
+							</div>
+						</div>
+					</section>
+					<section id="momento-n-esimo" class="col-md-4">
+						<header>
+							<h3>Momento <span class="text-nowrap">\(n\)-esimo</span></h3>
+						</header>
+						<div class="row">
+							<div class="col-sm-6 col-md-12">
+								\begin{equation}
+									\E[X^n] = \sum\limits_{i = 1}^{+\infty}{x_i^n \f_X(x_i)}
+								\end{equation}
+							</div>
+							<div class="col-sm-6 col-md-12">
+								\begin{equation}
+									\E[X^n] = \int\limits_{-\infty}^{+\infty}{x^n \f_X(x) \, \d x}
+								\end{equation}
+							</div>
+						</div>
+					</section>
+					<section id="momento-centrale-n-esimo" class="col-md-4">
+						<header>
+							<h3>Momento centrale <span class="text-nowrap">\(n\)-esimo</span></h3>
+						</header>
+						\[
+							\E[(X-\E[X])^n]
+						\]
+					</section>
+				</div>
+				<div class="row no-page-break">
+					<section id="varianza" class="col-md-4">
+						<header>
+							<h3>Varianza</h3>
+						</header>
+						\begin{equation}
+							\begin{aligned}
+								\Var[X] = \sigma_X^2 & = \E[(X - \E[X])^2] \\
+								& = \E[X^2] - (\E[X])^2
+							\end{aligned}
+						\end{equation}
+					</section>
+					<section id="funzione-generatrice-dei-momenti" class="col-md-4">
+						<header>
+							<h3>Funzione generatrice dei momenti</h3>
+						</header>
+						\begin{equation}
+							\M_X(s) = \E[e^{s X}] = \sum\limits_{i = 0}^{+\infty}{\E[X^s] \frac{s^i}{i!}}
+						\end{equation}
+						\begin{equation}
+							\M_X(0) = 1
+						\end{equation}
+						\begin{equation}
+							\E[X^k] = \left.\frac{d^k}{ds^k} \M_X(s)\right|_{s = 0}
+						\end{equation}
+					</section>
+					<section id="funzione-caratteristica" class="col-md-4">
+						<header>
+							<h3>Funzione caratteristica</h3>
+						</header>
+						\begin{equation}
+							\varphi_X(s) = \E[e^{j s X}]
+						\end{equation}
+						\begin{equation}
+							\varphi_X(0) = 1
+						\end{equation}
+					</section>
+				</div>
+			</section>
+			<section id="distribuzioni-discrete">
+				<header class="no-page-break-after">
+					<h2>Distribuzioni discrete</h2>
+				</header>
+				<div class="row no-page-break no-page-break-before">
+					<section id="distribuzione-bernoulli" class="col-sm-6">
+						<header>
+							<h3>Distribuzione di <span class="text-nowrap">Bernoulli (\(\mathcal{B}(1, p)\))</span></h3>
+						</header>
+						\begin{equation}
+							\f_X(x) = \begin{cases}
+								1 - p & x = 0 \\
+								p & x = 1 \\
+								0 & \text{altrimenti}
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\F_X(x) = \begin{cases}
+								0 & x \lt 0 \\
+								1 - p & 0 \le x \lt 1 \\
+								1 & x \ge 1
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\mu_X = p
+						\end{equation}
+						\begin{equation}
+							\sigma_X^2 = p (1 - p)
+						\end{equation}
+						<p><strong>Nota</strong>: siano \(X_1, \ldots, X_n\ \sim \mathcal{B}(1, p)\). Allora: \(\sum\limits_{i = 1}^{n}{X_i} \sim \mathcal{B}(n, p)\).</p>
+					</section>
+					<section id="distribuzione binomiale" class="col-sm-6">
+						<header>
+							<h3>Distribuzione <span class="text-nowrap">binomiale (\(\mathcal{B}(n, p)\))</span></h3>
+						</header>
+						<p><strong>Esempio</strong>: una moneta viene lanciata \(n\) volte. \(X\) è il numero di teste uscite.</p>
+						\begin{equation}
+							\f_X(x) = \begin{cases}
+								\binom{n}{x} p^x (1 - p)^{n - x} & x \in [0, n] \cap \mathbb{N} \\
+								0 & \text{altrimenti}
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\mu_X = n p
+						\end{equation}
+						\begin{equation}
+							\sigma_X^2 = n p (1 - p)
+						\end{equation}
+					</section>
+				</div>
+				<div class="row no-page-break">
+					<section id="distribuzione-geometrica" class="col-sm-6">
+						<header>
+							<h3>Distribuzione <span class="text-nowrap">geometrica (\(\mathcal{G}(p)\))</span></h3>
+						</header>
+						<p><strong>Esempio</strong>: una moneta viene lanciata ripetutamente finchè non esce testa. \(X\) è il numero totale di lanci.</p>
+						\begin{equation}
+							\f_X(x) = \begin{cases}
+								(1 - p)^{x - 1} p & x \in \mathbb{N} \setminus \{0\} \\
+								0 & \text{altrimenti}
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\F_X(x) = \begin{cases}
+								0 & x \lt 1 \\
+								1 - (1 - p)^{\lfloor x \rfloor} & x \ge 1
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\mu_X = \frac{1}{p}
+						\end{equation}
+						\begin{equation}
+							\sigma_X^2 = \frac{1 - p}{p^2}
+						\end{equation}
+					</section>
+					<section id="distribuzione-pascal" class="col-sm-6">
+						<header>
+							<h3>Distribuzione di Pascal <span class="text-nowrap">(\(\mathcal{N \! B}(n, p)\))</span></h3>
+						</header>
+						<p><strong>Esempio</strong>: una moneta viene lanciata fino a quando non esce testa \(n\) volte. \(X\) è il numero di croci ottenute.</p>
+						\begin{equation}
+							\f_X(x) = \begin{cases}
+								\binom{x + n - 1}{x} p^x (1 - p)^n & x \in \mathbb{N} \\
+								0 & \text{altrimenti}
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\mu_X = \frac{n p}{1 - p}
+						\end{equation}
+						\begin{equation}
+							\sigma_X^2 = \frac{n p}{(1 - p)^2}
+						\end{equation}
+					</section>
+				</div>
+				<div class="row no-page-break">
+					<section class="col-md-6">
+						<header>
+							<h3>Distribuzione <span class="text-nowrap">ipergeometrica (\(\mathcal{H}(N, K, n)\))</span></h3>
+						</header>
+						<p>Determina la probabilità di ottenere \(x\) successi in \(n\) estrazioni, senza reinserimento. Le estrazioni vengono effettuate da un gruppo di \(N\) oggetti, di cui \(K\) costituiscono un successo.</p>
+						\begin{equation}
+							\f_X(x) = \begin{cases}
+								\frac{\binom{N}{x} \binom{N - K}{n - x}}{\binom{N}{n}} & x \in [0, n] \cap \mathbb{N} \\
+								0 & \text{altrimenti}
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\mu_X = \frac{K n}{N}
+						\end{equation}
+						\begin{equation}
+							\sigma_X^2 = \frac{K (N - K) n (N - n)}{N^2 (N - 1)}
+						\end{equation}
+					</section>
+					<section class="col-md-6">
+						<header>
+							<h3>Distribuzione di <span class="text-nowrap">Poisson (\(\mathcal{P}(\lambda)\))</span></h3>
+						</header>
+						<p>La distribuzione di Poisson viene utilizzata come una approssimazione di una variabile aleatoria. Viene spesso impiegata per contare il numero di eventi in un certo intervallo di tempo.</p>
+						<p><strong>Esempio</strong>: in media, \(\lambda\) persone visitano il negozio XYZ tra le una e le due del pomeriggio. \(X\) è il numero effettivo di persone che visitano il negozio.</p>
+						\begin{equation}
+							\f_X(x) = \begin{cases}
+								\frac{\lambda^x e^{-\lambda}}{x!} & x \in \mathbb{N} \\
+								0 & \text{altrimenti}
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\F_X(x) = \begin{cases}
+								e^{-\lambda} \sum\limits_{i = 0}^{\lfloor x \rfloor}{\frac{\lambda^i}{i!}} & x \ge 0 \\
+								0 & \text{altrimenti}
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\mu_X = \lambda
+						\end{equation}
+						\begin{equation}
+							\sigma_X^2 = \lambda
+						\end{equation}
+					</section>
+				</div>
+			</section>
+			<section id="distribuzioni-continue">
+				<header class="no-page-break-after">
+					<h2>Distribuzioni continue</h2>
+				</header>
+				<div class="row no-page-break no-page-break-before">
+					<section id="distribuzione-uniforme" class="col-md-6">
+						<header>
+							<h3>Distribuzione <span class="text-nowrap">uniforme (\(\mathcal{U}(a, b)\))</span></h3>
+						</header>
+						\begin{equation}
+							\f_X(x) = \begin{cases}
+								\frac{1}{b - a} & a \le x \le b \\
+								0 & \text{altrimenti}
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\F_X(x) = \begin{cases}
+								0 & x \lt a \\
+								\frac{x - a}{b - a} & a \le x \le b \\
+								1 & x \ge b
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\mu_X = \frac{1}{2} (a + b)
+						\end{equation}
+						\begin{equation}
+							\sigma_X^2 = \frac{1}{12} (b - a)^2
+						\end{equation}
+					</section>
+					<section id="distribuzione-esponenziale" class="col-md-6">
+						<header>
+							<h3>Distribuzione <span class="text-nowrap">esponenziale (\(\mathcal{E}(\lambda)\))</span></h3>
+						</header>
+						\begin{equation}
+							\f_X(x) = \begin{cases}
+								\lambda e^{-\lambda x} & x \ge 0 \\
+								0 & \text{altrimenti}
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\F_X(x) = \begin{cases}
+								1 - e^{-\lambda x} & x \ge 0 \\
+								0 & \text{altrimenti}
+							\end{cases}
+						\end{equation}
+						\begin{equation}
+							\mu_X = \lambda^{-1}
+						\end{equation}
+						\begin{equation}
+							\sigma_X^2 = \lambda^{-2}
+						\end{equation}
+					</section>
+				</div>
+				<div class="row no-page-break">
+					<section id="distribuzione-normale" class="col-md-6">
+						<header>
+							<h3>Distribuzione <span class="text-nowrap">normale (\(\mathcal{N}(\mu_X, \sigma_X^2)\))</span></h3>
+						</header>
+						\begin{equation}
+							\f_X(x) = \frac{1}{\sqrt{2 \sigma_X^2 \pi}} e^{-\frac{(x - \mu_X)^2}{2 \sigma_X^2}}
+						\end{equation}
+						\begin{equation}
+							\mu_X = \mu_X
+						\end{equation}
+						\begin{equation}
+							\sigma_X^2 = \sigma_X^2
+						\end{equation}
+						<p><strong>Caso speciale</strong>: distribuzione standard \(\mathcal{N}(0, 1)\).</p>
+					</section>
+					<section id="distribuzione-gamma" class="col-md-6">
+						<header>
+							<h3>Distribuzione <span class="text-nowrap">gamma (\(\Gamma(\alpha, \beta)\))</span></h3>
+						</header>
+						<p>&lt;TODO&gt;</p>
+					</section>
+				</div>
+			</section>
+		</article>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js" integrity="sha256-Cr6N6zNN4bp0OwTQOZ6Z66M2r+2dpy/EwKMCyZ+SOMg=" crossorigin="anonymous"></script>
+		<script src="app.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script>
+	</body>
+</html>
