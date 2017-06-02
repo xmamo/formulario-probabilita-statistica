@@ -86,7 +86,7 @@
 					</section>
 					<section class="col-md-4">
 						<header>
-							<h3>&lt;TODO: TITLE&gt;</h3>
+							<h3>Funzione di probabilità <span class="text-nowrap">di \(Y = g(X)\)</span></h3>
 						</header>
 						<p>Sia \(Y = g(X)\), con \(g\) invertibile. Allora:</p>
 						\begin{equation}
@@ -412,21 +412,17 @@
 							<h3>Distribuzione <span class="text-nowrap">normale (\(\mathcal{N}(\mu_X, \sigma_X^2)\))</span></h3>
 						</header>
 						\begin{equation}
-							\f_X(x) = \frac{1}{\sqrt{2 \sigma_X^2 \pi}} e^{-\frac{(x - \mu_X)^2}{2 \sigma_X^2}}
+							\f_X(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\left(-\frac{1}{2} \left(\frac{x - \mu}{\sigma}\right)^2\right)
 						\end{equation}
 						\begin{equation}
-							\mu_X = \mu_X
+							\mu_X = \mu
 						\end{equation}
 						\begin{equation}
-							\sigma_X^2 = \sigma_X^2
+							\sigma_X^2 = \sigma^2
 						\end{equation}
+						<p><strong>Z-score</strong>: \(z = \frac{x - \mu}{\sigma}\).<br />
+						\(|z|\) misura quanto dista \(x\) da \(\mu\), usando \(\sigma\) come unità di misura.</p>
 						<p><strong>Caso speciale</strong>: distribuzione standard \(\mathcal{N}(0, 1)\).</p>
-					</section>
-					<section id="distribuzione-gamma" class="col-md-6">
-						<header>
-							<h3>Distribuzione <span class="text-nowrap">gamma (\(\Gamma(\alpha, \beta)\))</span></h3>
-						</header>
-						<p>&lt;TODO&gt;</p>
 					</section>
 				</div>
 			</section>
